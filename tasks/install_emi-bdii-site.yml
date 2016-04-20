@@ -40,3 +40,6 @@
     owner=root
     group=root
     mode="u=rw,g=r,o=r"
+
+- name: Ensure BDII is running and enabled.
+  service: name=bdii state=started enabled=yes
