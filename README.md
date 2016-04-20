@@ -82,6 +82,8 @@ bdii-site.yml
 ```
 - hosts: bdii-site
   remote_user: root
+  roles:
+    - ansible-bdii-site
   vars:
    SITE_NAME: UKI-NORTHGRID-LANCS-HEP-TEST
    SITE_COUNTRY: UK
