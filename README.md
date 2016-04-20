@@ -41,20 +41,20 @@ For the BDII site configuration file which specifies the site attributes, these 
 
 Additionally, and additional information for the "OTHERINFO" variable can be passed using an ansible list as so:
 
-> OTHERINFO:
-> - GRID=EGEE
-> - GRID=GRIDPP
-> - GRID=WLCG
-> - GRID=NORTHGRID
-> - TIER=2
-
+```OTHERINFO:
+- GRID=EGEE
+- GRID=GRIDPP
+- GRID=WLCG
+- GRID=NORTHGRID
+- TIER=2
+```
 
 You also need to provide a list of resource BDIIs that will be published in the site BDII.  The BDII host itself is automatically added to the list, a YAML dictionary of aliases, and URLs should be provided e.g.:
 
-> SITEURLS:
->     CE1: CE1.lancs.ac.uk
->     SE1: SE1.lancs.ac.uk
-
+```SITEURLS:
+    CE1: CE1.lancs.ac.uk
+    SE1: SE1.lancs.ac.uk
+```
 
 Optional Variables
 -------------
@@ -63,9 +63,9 @@ The first optional variable is for whether you would like ansible to configure t
 
 Additional input rules can be passed using an ansible list like so:
 
-> iptables_rules:
-> - '-A INPUT -s ganglia.lancs.ac.uk -m state --state NEW -m tcp -p tcp --dport 8649 -j ACCEPT'
-
+```iptables_rules:
+- '-A INPUT -s ganglia.lancs.ac.uk -m state --state NEW -m tcp -p tcp --dport 8649 -j ACCEPT'
+```
 
 All other variables listed in the BDII Documentation can be set using the same variable name.  The only variable you will probably want to set is for whether your site supports IPv6 (`BDII_IPV6_SUPPORT`) in which case you need to configure the firewall manually as it blocks all IPv6 connections.
 
