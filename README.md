@@ -41,7 +41,8 @@ For the BDII site configuration file which specifies the site attributes, these 
 
 Additionally, and additional information for the "OTHERINFO" variable can be passed using an ansible list as so:
 
-```OTHERINFO:
+```
+OTHERINFO:
 - GRID=EGEE
 - GRID=GRIDPP
 - GRID=WLCG
@@ -51,7 +52,8 @@ Additionally, and additional information for the "OTHERINFO" variable can be pas
 
 You also need to provide a list of resource BDIIs that will be published in the site BDII.  The BDII host itself is automatically added to the list, a YAML dictionary of aliases, and URLs should be provided e.g.:
 
-```SITEURLS:
+```
+SITEURLS:
     CE1: CE1.lancs.ac.uk
     SE1: SE1.lancs.ac.uk
 ```
@@ -63,7 +65,8 @@ The first optional variable is for whether you would like ansible to configure t
 
 Additional input rules can be passed using an ansible list like so:
 
-```iptables_rules:
+```
+iptables_rules:
 - '-A INPUT -s ganglia.lancs.ac.uk -m state --state NEW -m tcp -p tcp --dport 8649 -j ACCEPT'
 ```
 
