@@ -1,0 +1,9 @@
+# Automatically created by ansible
+# using the ansible-bdii-site role
+
+SITEBDII = ldap://{{ ansible_fqdn }}:2170/mds-vo-name=resource,o=grid
+{%if SITEURLS is defined %}
+{% for alias, url in SITEURLS.iteritems() %}
+{{ alias }} ldap://{{ url }}:2170/mds-vo-name=resource,o=grid
+{% endfor %}
+{% endif %}

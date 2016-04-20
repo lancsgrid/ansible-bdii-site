@@ -1,0 +1,42 @@
+---
+# These tasks install the emi-bdii-site package and configure the required files
+
+# Always best to install yum-priorities with UMD4
+- name: Install yum-priorities plugin
+  yum: name=emi-bdii-site state=present
+
+# Configure /etc/bdii/bdii.conf
+- name: Configure /etc/bdii/bdii.conf
+  template: >
+    src=etc/bdii/bdii.conf.j2
+    dest=/etc/bdii/bdii.conf
+    owner=root
+    group=root
+    mode="u=rw,g=r,o=r"
+
+# Configure /etc/sysconfig/bdii
+- name: Configure /etc/sysconfig/bdii
+  template: >
+    src=etc/sysconfig/bdii.j2
+    dest=/etc/sysconfig/bdii
+    owner=root
+    group=root
+    mode="u=rw,g=r,o=r"
+
+# Configure /etc/glite-info-static/site/site.cfg
+- name: Configure /etc/glite-info-static/site/site.cfg
+  template: >
+    src=etc/glite-info-static/site/site.cfg.j2
+    dest=/etc/glite-info-static/site/site.cfg
+    owner=root
+    group=root
+    mode="u=rw,g=r,o=r"
+
+# Configure /etc/bdii/gip/site-urls.conf
+- name: Configure /etc/bdii/gip/site-urls.conf
+  template: >
+    src=etc/bdii/gip/site-urls.conf.j2
+    dest=/etc/bdii/gip/site-urls.conf
+    owner=root
+    group=root
+    mode="u=rw,g=r,o=r"

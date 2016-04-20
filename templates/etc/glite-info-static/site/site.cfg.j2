@@ -1,0 +1,42 @@
+# Automatically created by ansible
+# using the ansible-bdii-site role
+
+# Site name, a domain name.
+SITE_NAME = {{ SITE_NAME }}
+SITE_COUNTRY = {{ SITE_COUNTRY }}
+
+# Optional description of the site
+SITE_DESC = {{ SITE_DESC }}
+
+# Optional web address in full URL format. E.g.: http://www.cern.ch/gridinfo
+SITE_WEB = {{ SITE_WEB }}
+
+# New optional GLUE 2.0 parameter to identify if the site is geographically distributed
+# true or false
+SITE_DISTRIBUTED = {{ SITE_DISTRIBUTED }}
+
+# Location of the site
+SITE_LOC = {{ SITE_LOC }}
+
+# Latitude
+SITE_LAT = {{ SITE_LAT }}
+
+# Longitude
+SITE_LONG = {{ SITE_LONG }}
+
+# Contact email
+SITE_EMAIL = {{ SITE_EMAIL }}
+
+# Security email
+SITE_SECURITY_EMAIL = {{ SITE_SECURITY_EMAIL }}
+
+# User support email
+SITE_SUPPORT_EMAIL = {{ SITE_SUPPORT_EMAIL }}
+
+# Other info
+
+{% if OTHERINFO is defined %}
+{% for item in OTHERINFO %}
+OTHERINFO = {{ item }}
+{% endfor %}
+{$ endif %}
