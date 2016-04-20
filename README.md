@@ -4,7 +4,7 @@ Ansible role for a site bdii
 Requirments
 -----------
 
-CC7 or compatable OS.
+CC7 or compatable OS (with ssh access via public key encryption).
 
 Role
 -----------
@@ -71,6 +71,39 @@ iptables_rules:
 ```
 
 All other variables listed in the BDII Documentation can be set using the same variable name.  The only variable you will probably want to set is for whether your site supports IPv6 (`BDII_IPV6_SUPPORT`) in which case you need to configure the firewall manually as it blocks all IPv6 connections.
+
+
+Example
+------------
+
+An example playbook would be:
+
+bdii-site.yml
+```
+- hosts: bdii-site
+  remote_user: root
+  vars:
+   SITE_NAME: UKI-NORTHGRID-LANCS-HEP-TEST
+   SITE_COUNTRY: UK
+   SITE_DESC: A UK Site
+   SITE_WEB: https://lancsgrid.wordpress.com
+   SITE_LOC: Lancaster, UK
+   SITE_LAT: 54.0105
+   SITE_LONG: -2.7840
+   SITE_EMAIL: admin@domain.invalid
+   SITE_SECURITY_EMAIL: admin@domain.invalid
+   SITE_SUPPOT_EMAIL: admin@domain.invalid
+   OTHERINFO: ['GRID=EGEE', 'GRID=GRIDPP', 'GRID=WLCG', 'GRID=NORTHGRID', 'TIER=2']
+   SITEURLS: {CE1: CE1.lancs.ac.uk, SE1: SE1.lancs.ac.uk}
+   control_iptables: true
+   ssh_gateway: 0.0.0.0/0
+   iptables_rules: ['-A INPUT -s ganglia.lancs.ac.uk -m state --state NEW -m tcp -p tcp --dport 8649 -j ACCEPT']
+```
+
+Which can then be ran by doing:
+`ansible-playbooks -i inventory -s bdii-site.yml`  
+
+This assumes the existance of an inventory file where the bdii server is in the group 'bdii-site'.
 
 
 Author
