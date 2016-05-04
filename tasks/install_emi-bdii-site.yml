@@ -45,7 +45,6 @@
     group=root
     mode="u=rw,g=r,o=r"
 
-templates/
 # Configure etc/bdii/gip/glite-info-site-defaults.conf
 - name: Configure etc/bdii/gip/glite-info-site-defaults.conf
   template: >
