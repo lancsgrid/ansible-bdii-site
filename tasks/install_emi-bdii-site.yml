@@ -17,6 +17,7 @@
     owner=root
     group=root
     mode="u=rw,g=r,o=r"
+  notify: restart bdii
 
 # Configure /etc/sysconfig/bdii
 - name: Configure /etc/sysconfig/bdii
@@ -26,6 +27,7 @@
     owner=root
     group=root
     mode="u=rw,g=r,o=r"
+  notify: restart bdii
 
 # Configure /etc/glite-info-static/site/site.cfg
 - name: Configure /etc/glite-info-static/site/site.cfg
@@ -35,6 +37,7 @@
     owner=root
     group=root
     mode="u=rw,g=r,o=r"
+  notify: restart bdii
 
 # Configure /etc/bdii/gip/site-urls.conf
 - name: Configure /etc/bdii/gip/site-urls.conf
@@ -44,6 +47,7 @@
     owner=root
     group=root
     mode="u=rw,g=r,o=r"
+  notify: restart bdii
 
 # Configure etc/bdii/gip/glite-info-site-defaults.conf
 - name: Configure etc/bdii/gip/glite-info-site-defaults.conf
@@ -53,6 +57,7 @@
     owner=root
     group=root
     mode="u=rw,g=r,o=r"
+  notify: restart bdii
 
 - name: Ensure BDII is running and enabled.
   service: name=bdii state=started enabled=yes

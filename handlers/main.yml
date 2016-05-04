@@ -7,6 +7,5 @@
 - name: restart ip6tables
   service: name=ip6tables state=restarted
 
-
-
-
+- name: restart bdii
+  service: name=bdii state=restarted
