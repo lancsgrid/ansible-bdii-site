@@ -45,5 +45,15 @@
     group=root
     mode="u=rw,g=r,o=r"
 
+templates/
+# Configure etc/bdii/gip/glite-info-site-defaults.conf
+- name: Configure etc/bdii/gip/glite-info-site-defaults.conf
+  template: >
+    src=etc/bdii/gip/glite-info-site-defaults.conf.j2
+    dest=/etc/bdii/gip/glite-info-site-defaults.conf
+    owner=root
+    group=root
+    mode="u=rw,g=r,o=r"
+
 - name: Ensure BDII is running and enabled.
   service: name=bdii state=started enabled=yes
