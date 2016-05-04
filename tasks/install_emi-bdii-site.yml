@@ -1,8 +1,12 @@
 ---
 # These tasks install the emi-bdii-site package and configure the required files
 
-# Always best to install yum-priorities with UMD4
-- name: Install yum-priorities plugin
+# Install dependencies for BDII.
+- name: Install bdii dependencies
+  yum: name=redhat-lsb-core state=present
+
+# Installs the main emi-bdii-site package
+- name: Install emi-bdii-site package
   yum: name=emi-bdii-site state=present
 
 # Configure /etc/bdii/bdii.conf
