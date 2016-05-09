@@ -34,5 +34,5 @@ SITE_COUNTRY: Switzerland
 SITE_LAT: 0.0
 SITE_LONG: 0.0
 SITE_EMAIL: admin@domain.invalid
-SITE_SECURITY_EMAIL: admin@domain.invalid
-SITE_SUPPORT_EMAIL: admin@domain.invalid
+SITE_SECURITY_EMAIL: "{{ SITE_EMAIL }}"
+SITE_SUPPORT_EMAIL: "(( SITE_EMAIL }}"
