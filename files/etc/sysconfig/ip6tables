@@ -1,0 +1,21 @@
+# Automatically created by ansible
+# using the ansible-bdii-site role
+
+# Firewall configuration written by system-config-firewall                                                      
+# Manual customization of this file is not recommended.                                                         
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# Allow unlimited traffic on loopback                                                                           
+-A INPUT -i lo -j ACCEPT
+-A OUTPUT -o lo -j ACCEPT
+
+## Do not permit incoming or outgoing connections.                                                              
+## Note: Blocking outgoing connection will stop host being able to send rejection messages.                     
+-A INPUT -j DROP
+-A FORWARD -j DROP
+-A OUTPUT -j REJECT
+
+COMMIT

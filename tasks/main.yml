@@ -1,0 +1,4 @@
+---
+- include: install_UMD_repo.yml
+- include: install_emi-bdii-site.yml
+- include: configure_iptables.yml

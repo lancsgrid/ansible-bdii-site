@@ -1,0 +1,48 @@
+---
+# This task copies the configs for the Site BDII iptables.
+# This is a teporary hack to enable iptables instead of firewalld
+- name: Disable firewalld
+  service: >
+    name=firewalld
+    state=stopped
+    enabled=no
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 7 and control_iptables == true
+
+- name: Install iptables
+  yum: name=iptables-services state=present
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 7 and control_iptables == true
+
+- name: Ensure iptables is started
+  service: >
+    name=iptables
+    state=started
+    enabled=yes
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 7 and control_iptables == true
+
+- name: Ensure ip6tables is started
+  service: >
+    name=ip6tables
+    state=started
+    enabled=yes
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version|int == 7 and control_iptables == true
+
+- name: Copy configs for iptables
+  template: >
+    src=etc/sysconfig/iptables.j2
+    dest=/etc/sysconfig/iptables
+    owner=root
+    group=root
+    mode="u=rw,g=,o="
+  notify: restart iptables
+  when: control_iptables == true
+
+# Minor hack, currently no IPv6 is allowed.
+- name: Copy configs for iptables
+  copy: >
+    src=etc/sysconfig/ip6tables
+    dest=/etc/sysconfig/ip6tables
+    owner=root
+    group=root
+    mode="u=rw,g=,o="
+  notify: restart ip6tables
+  when: control_iptables == true
