@@ -36,8 +36,8 @@ For the BDII site configuration file which specifies the site attributes, these 
 |SITE_LAT| Optional, site latitude |
 |SITE_LONG| Optional, site longitude |
 |SITE_EMAIL| Sites contact email |
-|SITE_SECURITY_EMAIL| Sites security contact email |
-|SITE_SUPPORT_EMAIL| Sites support email |
+|SITE_SECURITY_EMAIL| Sites security contact email, defaults to SITE_EMAIL |
+|SITE_SUPPORT_EMAIL| Sites support email, defaults to SITE_EMAIL |
 
 Additionally, and additional information for the "OTHERINFO" variable can be passed using an ansible list as so:
 
