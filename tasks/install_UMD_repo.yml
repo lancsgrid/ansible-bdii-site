@@ -5,9 +5,15 @@
 - name: Install yum-priorities plugin
   yum: name=yum-priorities state=present
 
-# Install UMD4 repo
-- name: Install UMD4 repo
+# Install UMD4 repo SL6
+- name: Install UMD4 SLC6 repo
+  yum: name=http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-4.1.3-1.el6.noarch.rpm state=present
+  when: (ansible_distribution == "Scientific" and ansible_distribution_major_version == "6")
+
+# Install UMD4 repo CentOS7
+- name: Install UMD4 CentOS7 repo
   yum: name=http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm state=present
+  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
 
 # Import UMD4 gpg key
 - name: Import UMD4 gpg key
