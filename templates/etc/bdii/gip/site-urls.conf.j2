@@ -2,8 +2,12 @@
 # using the ansible-bdii-site role
 
 SITEBDII ldap://{{ ansible_fqdn }}:2170/mds-vo-name=resource,o=grid
-{%if SITEURLS is defined %}
+{% if SITEURLS is defined %}
 {% for alias, url in SITEURLS.iteritems() %}
+{% if ':' in url %}
+{{ alias }} ldap://{{ url }}/mds-vo-name=resource,o=grid
+{% else %}
 {{ alias }} ldap://{{ url }}:2170/mds-vo-name=resource,o=grid
+{% endif %}
 {% endfor %}
 {% endif %}
